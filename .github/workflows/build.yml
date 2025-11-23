@@ -62,13 +62,13 @@ jobs:
           copy src\config.json build\Release\
           copy bin\WinRing0\WinRing0x64.sys build\Release\
           cd build/Release
-          7z a -tzip -mx xmrig-vrl-${{ needs.check.outputs.tag }}-win-x64.zip xmrig.exe config.json WinRing0x64.sys
+          7z a -tzip -mx xmrig-vrl-${{ needs.check.outputs.tag }}-windows-x64.zip xmrig.exe config.json WinRing0x64.sys
 
       - name: upload artifact to release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ needs.check.outputs.tag }}
           name: ${{ needs.check.outputs.tag }}
-          files: build/Release/xmrig-${{ needs.check.outputs.tag }}-windows-x64.zip
+          files: build/Release/xmrig-vrl-${{ needs.check.outputs.tag }}-windows-x64.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
